@@ -55,12 +55,12 @@
       outline: none;
     }
     /* Main content */
-    main {
+   main {
   margin-left: 220px;
   padding: 3rem 4rem;
   flex: 1;
   background: #fff;
-  min-height: calc(100vh - 80px); /* Adjust to account for footer */
+  min-height: 100vh;
 }
 
     /* Profile section */
@@ -112,11 +112,8 @@
     }
     /* Footer */
     footer {
-  position: fixed;
-  left: 220px; /* Align with main content start */
-  right: 0;
-  bottom: 0;
-  padding: 1rem 2rem;
+  margin-left: 220px;
+  padding: 1.5rem 2rem;
   background: #f1f1f1;
   color: #666;
   font-size: 0.9rem;
@@ -124,6 +121,7 @@
   justify-content: space-between;
   align-items: center;
   border-top: 1px solid #ccc;
+  flex-wrap: wrap;
 }
 
 footer p {
