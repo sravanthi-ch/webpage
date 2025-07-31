@@ -58,13 +58,11 @@
     main {
   margin-left: 220px;
   padding: 3rem 4rem;
-  flex-grow: 1;
-  background: white;
-  border-radius: 0;
-  box-shadow: none;
-  min-height: 100vh;
-  max-width: 1600px;
+  flex: 1;
+  background: #fff;
+  min-height: calc(100vh - 80px); /* Adjust to account for footer */
 }
+
     /* Profile section */
     #about {
       display: flex;
@@ -114,18 +112,20 @@
     }
     /* Footer */
     footer {
-  margin-left: 220px;
-  padding: 2rem 2rem;
+  position: fixed;
+  left: 220px; /* Align with main content start */
+  right: 0;
+  bottom: 0;
+  padding: 1rem 2rem;
   background: #f1f1f1;
   color: #666;
   font-size: 0.9rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
+  border-top: 1px solid #ccc;
 }
-    
+
 footer p {
   margin: 0;
 }
