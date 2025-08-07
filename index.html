@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF‑8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dr. Jane Doe – Research Scholar</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bitmaks/cm-web-fonts@latest/fonts.css">
+
+  <!-- ✅ Google Fonts for academic styling -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --nav-bg: #1D4ED8;
-      --hover-bg: #2563EB;
-      --accent: #3B82F6;
-      --text: #1F2937;
+      --bg-light: #F9DFDC;
+      --bg-dark: #000000;
+      --text: #0C4271;
+      --text-light: #E5E5E5;
+      --heading-color: #0C4271;
+      --accent: #0A81AB;
+      --nav-bg: #0C4271;
+      --hover-bg: #0A81AB;
       --secondary: #4B5563;
-      --bg-light: #F9FAFB;
-      --bg-dark: #121212;
-      --text-light: #E5E7EB;
-      --heading-color: #0F172A;
 
       --transition: background-color 0.3s ease, color 0.3s ease;
-
       --body-font: clamp(1rem, 1.5vw, 1.125rem);
-      --h2-font: clamp(1.75rem, 2.5vw, 2.5rem);
+      --h2-font: clamp(1.75rem, 2.5vw, 2.25rem);
     }
 
     @media (prefers-color-scheme: dark) {
       :root {
         --bg-light: var(--bg-dark);
         --text: var(--text-light);
-        --secondary: #9CA3AF;
-        --nav-bg: #1E3A8A;
-        --hover-bg: #3B82F6;
-        --accent: #60A5FA;
-        --heading-color: #93C5FD;
+        --heading-color: #0A81AB;
+        --secondary: #AAAAAA;
+        --nav-bg: #0C4271;
       }
     }
 
@@ -42,11 +42,12 @@
     }
 
     body {
-      font-family: 'libre baskerville', sans-serif;
+      font-family: 'Source Serif Pro', serif;
       font-size: var(--body-font);
-      background: var(--bg-light);
+      background-color: var(--bg-light);
       color: var(--text);
-      transition: background-color 0.5s, color 0.5s;
+      line-height: 1.65;
+      transition: var(--transition);
     }
 
     nav {
@@ -57,26 +58,30 @@
     }
 
     nav h1 {
-      font-size: clamp(1.6rem, 2vw, 2rem);
+      font-family: 'Merriweather', serif;
+      font-size: 1.75rem;
       font-weight: 700;
       margin-bottom: 1rem;
     }
 
     nav a {
+      font-family: 'Inter', sans-serif;
       display: inline-block;
       margin: 0.4rem 0.6rem;
       padding: 0.4rem 0.8rem;
-      color: #cbd5e1;
+      color: #F9DFDC;
       text-decoration: none;
       font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.95rem;
       border-radius: 4px;
-      transition: background-color 0.25s ease, color 0.25s ease;
+      transition: var(--transition);
     }
 
-    nav a:hover,
-    nav a:focus {
-      background-color: var(--accent);
-      color: var(--nav-bg);
+    nav a:hover {
+      background-color: var(--hover-bg);
+      color: white;
     }
 
     .content-wrapper {
@@ -107,18 +112,18 @@
     }
 
     h2 {
+      font-family: 'Merriweather', serif;
       font-size: var(--h2-font);
       color: var(--heading-color);
       border-bottom: 3px solid var(--accent);
       display: inline-block;
-      margin-bottom: 1rem;
+      margin: 2rem 0 1rem;
+      letter-spacing: 0.5px;
     }
 
-    p,
-    ul {
-      color: var(--text);
-      font-size: var(--body-font);
-      line-height: 1.6;
+    p, ul {
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
     }
 
     ul {
@@ -135,7 +140,7 @@
       font-weight: 600;
       text-decoration: none;
       border-bottom: 2px solid transparent;
-      transition: border-color 0.3s ease, color 0.3s ease;
+      transition: var(--transition);
     }
 
     #contact a:hover {
@@ -144,26 +149,25 @@
     }
 
     footer {
+      font-family: 'Inter', sans-serif;
       background: var(--bg-light);
       color: var(--secondary);
       font-size: 0.9rem;
       padding: 1.5rem 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
+      text-align: center;
       border-top: 1px solid #ccc;
     }
 
     .social-links {
+      margin-top: 0.5rem;
       display: flex;
+      justify-content: center;
       gap: 1rem;
     }
 
     .social-links a {
       width: 28px;
       height: 28px;
-      display: inline-block;
       fill: var(--secondary);
       transition: fill 0.3s;
     }
@@ -185,13 +189,6 @@
         padding: 2rem 1rem;
       }
 
-      nav a {
-        display: block;
-        width: 100%;
-        text-align: center;
-        margin: 0.5rem 0;
-      }
-
       .content-wrapper {
         margin-left: 220px;
         padding: 3rem 4rem;
@@ -208,8 +205,7 @@
       }
 
       footer {
-        flex-direction: row;
-        justify-content: space-between;
+        text-align: left;
       }
     }
   </style>
@@ -264,7 +260,7 @@
       <p>&copy; 2025 Dr. Jane Doe | Personal Academic Website</p>
       <div class="social-links" aria-label="Social links">
         <a href="https://scholar.google.com" target="_blank" aria-label="Google Scholar">
-          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 5.94 2 10.5c0 4.16 3.93 7.5 9 7.5 1.57 0 3.03-.43 4.26-1.17l-1.07-1.28c-.8.48-1.78.72-2.8.72-3.64 0-6.6-2.2-6.6-5.1 0-2.63 2.65-4.7 6.2-4.7 3.25 0 5.6 1.75 5.6 4.15 0 1.25-.84 2.36-2.08 2.78v-2.09h-1.83v5.68h3.3l1.03-1.39a8.75 8.75 0 0 0 2.6-6.11C22 6.4 17.52 2"></path></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 5.94 2 10.5c0 4.16 3.93 7.5 9 7.5 1.57 0 3.03-.43 4.26-1.17l-1.07-1.28c-.8.48-1.78.72-2.8.72-3.64 0-6.6-2.2-6.6-5.1 0-2.63 2.65-4.7 6.2-4.7 3.25 0 5.6 1.75 5.6 4.15 0 1.25-.84 2.36-2.08 2.78v-2.09h-1.83v5.68h3.3l1.03-1.39a8.75 8.75 0 0 0 2.6-6.11C22 6.4 17.52 2 12 2z"/></svg>
         </a>
       </div>
     </footer>
