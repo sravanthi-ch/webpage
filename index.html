@@ -6,28 +6,29 @@
   <title>Dr. Jane Doe – Research Scholar</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bitmaks/cm-web-fonts@latest/fonts.css">
   <style>
-    :root {
-  --nav-bg: #0A1172;
-  --hover-bg: #3c4ec4;
-  --accent: #60a5fa; /* lighter blue */
-  --text: #333;
-  --secondary: #777;
-  --bg-light: #f9fafc;
-  --bg-dark: #1a1a1a;
-  --text-light: #eee;
+   :root {
+  --nav-bg: #1A237E;         /* Deep academic blue */
+  --hover-bg: #3949AB;       /* Indigo for hover */
+  --accent: #4FC3F7;         /* Sky blue */
+  --text: #212121;           /* Near black for primary text */
+  --secondary: #616161;      /* Subtle gray */
+  --bg-light: #FDFDFD;       /* Crisp white */
+  --bg-dark: #ECEFF1;        /* Soft contrast for dark scheme */
+  --text-light: #E0E0E0;     /* Light gray for dark backgrounds */
   --transition: background-color 0.3s ease, color 0.3s ease;
 
   --body-font: clamp(1rem, 1.5vw, 1.125rem);
   --h2-font: clamp(1.75rem, 2.5vw, 2.5rem);
 }
 
+
     @media (prefers-color-scheme: dark) {
-      :root {
-        --bg-light: var(--bg-dark);
-        --text: var(--text-light);
-        --secondary: #aaa;
-      }
-    }
+  :root {
+    --bg-light: #2B2B2B;
+    --text: #E0E0E0;
+    --secondary: #AAAAAA;
+  }
+}
 
     * {
       margin: 0;
@@ -36,7 +37,7 @@
     }
 
     body {
-      font-family: "Computer Modern Sans", sans-serif;
+      font-family: 'Inter', 'Helvetica Neue', sans-serif;
       font-size: var(--body-font);
       background: var(--bg-light);
       color: var(--text);
@@ -136,7 +137,7 @@
 }
 
     footer {
-      background: #f1f1f1;
+      background: #ECEFF1;
       color: var(--secondary);
       font-size: 0.9rem;
       padding: 1.5rem 1rem;
