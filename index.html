@@ -135,6 +135,27 @@
       margin-bottom: 0.5rem;
     }
 
+    /* Style for the clickable abstract toggles */
+    .abstract-toggle {
+      color: var(--accent);
+      text-decoration: underline;
+      cursor: pointer;
+      font-weight: 600;
+      margin-left: 0.5rem;
+      font-size: 0.9rem;
+      user-select: none;
+    }
+
+    .abstract-text {
+      display: none;
+      margin-top: 0.25rem;
+      margin-left: 1.5rem;
+      font-style: italic;
+      color: var(--secondary);
+      font-size: 0.95rem;
+      max-width: 85%;
+    }
+
     #contact a {
       color: var(--accent);
       font-weight: 600;
@@ -223,7 +244,7 @@
   <div class="content-wrapper">
     <main>
       <section id="about">
-        <img src="profile.png" alt="Dr. Jane Doe Profile Picture" />
+        <img src="profile.png" alt="Sravanthi Chede Profile Picture" />
         <div>
           <h2>About Me</h2>
           <p>I am a research scholar at XYZ University focusing on the intersection of machine learning, natural language processing, and AI ethics. My work aims to develop interpretable models for real-world language understanding tasks.</p>
@@ -243,8 +264,20 @@
       <section id="publications">
         <h2>Publications</h2>
         <ul>
-          <li>Sravanthi Chede, Leroy Chew \& Anil Shukla. <em>Circuits, Proofs and Propositional Model Counting</em>. FSTTCS 2024.</li>
-          <li>Sravanthi Chede \& Anil Shukla. <em>Extending Merge Resolution to a Family of QBF-Proof Systems</em>. STACS 2023.</li>
+          <li>
+            Sravanthi Chede, Leroy Chew & Anil Shukla. <em>Circuits, Proofs and Propositional Model Counting</em>. FSTTCS 2024.
+            <span class="abstract-toggle" data-target="abstract1">[Abstract]</span>
+            <p id="abstract1" class="abstract-text">
+              This paper explores novel proof techniques in propositional model counting, presenting new complexity results and algorithmic strategies.
+            </p>
+          </li>
+          <li>
+            Sravanthi Chede & Anil Shukla. <em>Extending Merge Resolution to a Family of QBF-Proof Systems</em>. STACS 2023.
+            <span class="abstract-toggle" data-target="abstract2">[Abstract]</span>
+            <p id="abstract2" class="abstract-text">
+              We extend the merge resolution proof system, offering new insights and completeness results for quantified Boolean formulas.
+            </p>
+          </li>
         </ul>
       </section>
 
@@ -257,7 +290,7 @@
     </main>
 
     <footer>
-      <p>&copy; 2025 Dr. Jane Doe | Personal Academic Website</p>
+      <p>&copy; 2025 Sravanthi Chede | Personal Academic Website</p>
       <div class="social-links" aria-label="Social links">
         <a href="https://scholar.google.com" target="_blank" aria-label="Google Scholar">
           <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 5.94 2 10.5c0 4.16 3.93 7.5 9 7.5 1.57 0 3.03-.43 4.26-1.17l-1.07-1.28c-.8.48-1.78.72-2.8.72-3.64 0-6.6-2.2-6.6-5.1 0-2.63 2.65-4.7 6.2-4.7 3.25 0 5.6 1.75 5.6 4.15 0 1.25-.84 2.36-2.08 2.78v-2.09h-1.83v5.68h3.3l1.03-1.39a8.75 8.75 0 0 0 2.6-6.11C22 6.4 17.52 2 12 2z"/></svg>
@@ -265,5 +298,20 @@
       </div>
     </footer>
   </div>
+
+  <script>
+    // Toggle abstract paragraphs on clicking [Abstract] text
+    document.querySelectorAll('.abstract-toggle').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const targetId = toggle.getAttribute('data-target');
+        const abstractPara = document.getElementById(targetId);
+        if (abstractPara.style.display === 'block') {
+          abstractPara.style.display = 'none';
+        } else {
+          abstractPara.style.display = 'block';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
