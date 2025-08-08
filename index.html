@@ -139,6 +139,25 @@
 
     ul li {
       margin-bottom: 0.5rem;
+          /* Style for the clickable abstract toggles */
+    .abstract-toggle {
+      color: var(--accent);
+      text-decoration: underline;
+      cursor: pointer;
+      font-weight: 600;
+      margin-left: 0.5rem;
+      font-size: 0.9rem;
+      user-select: none;
+    }
+    .abstract-text {
+      display: none;
+      margin-top: 0.25rem;
+      margin-left: 1.5rem;
+      font-style: italic;
+      color: var(--secondary);
+      font-size: 0.95rem;
+      max-width: 85%;
+    }
     }
 
     #contact a {
@@ -294,5 +313,19 @@ On the lower bound side, we lift the lower bound result of regular MRes ([Beyers
       </div>
     </footer>
   </div>
+    <script>
+    // Toggle abstract paragraphs on clicking [Abstract] text
+    document.querySelectorAll('.abstract-toggle').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const targetId = toggle.getAttribute('data-target');
+        const abstractPara = document.getElementById(targetId);
+        if (abstractPara.style.display === 'block') {
+          abstractPara.style.display = 'none';
+        } else {
+          abstractPara.style.display = 'block';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
