@@ -100,6 +100,7 @@
     body {
       display: flex;
       min-height: 100vh;
+      flex-direction: column;
     }
     nav {
       position: fixed;
@@ -112,6 +113,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      flex-shrink: 0;
     }
     nav h1 {
       margin-left: 1rem;
@@ -130,6 +132,7 @@
       flex-grow: 1;
       max-width: calc(100vw - 220px);
       overflow-x: hidden;
+      min-height: calc(100vh - 90px); /* footer height approx */
     }
   }
 
@@ -233,39 +236,47 @@
     border-color: var(--accent);
   }
   #publications a, #sideProjects a,
-#Preprints a {
-  color: var(--accent);
-  font-weight: 600;
-  text-decoration: none;
-  border-bottom: 2px solid transparent;
-  transition: var(--transition);
-}
+  #Preprints a {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: var(--transition);
+  }
 
-#publications a:hover, #sideProjects a,
-#Preprints a:hover {
-  color: var(--hover-bg);
-  border-color: var(--accent);
-}
-
+  #publications a:hover, #sideProjects a:hover,
+  #Preprints a:hover {
+    color: var(--hover-bg);
+    border-color: var(--accent);
+  }
 
   footer {
     font-family: 'Inter', sans-serif;
     background: var(--bg-light);
     color: var(--secondary);
     font-size: 0.9rem;
-    padding: 1.5rem 1rem;
+    padding: 1rem 2rem;
     text-align: center;
     border-top: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  footer p {
+    margin: 0;
   }
 
   .social-links {
-    margin-top: 0.5rem;
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 1.25rem;
   }
 
   .social-links a {
+    display: inline-flex;
     width: 28px;
     height: 28px;
     fill: var(--secondary);
@@ -276,11 +287,21 @@
     fill: var(--accent);
   }
 
+  /* SVG icon sizes */
+  .social-links svg {
+    width: 28px;
+    height: 28px;
+  }
+
   @media (min-width: 768px) {
     footer {
-      text-align: left;
+      text-align: center;
+      padding: 1rem 4rem;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
       margin-left: 220px;
-      padding-left: 2rem;
+      border-top: 1px solid #ccc;
     }
   }
 </style>
@@ -326,106 +347,61 @@
         <p id="abstract1" class="abstract-text">
           In this paper we present a new proof system framework CLIP (Circuit Linear Induction Proposition) for propositional model counting (#SAT). A CLIP proof firstly involves a Boolean circuit, calculating the cumulative function (or running count) of models counted up to a point, and secondly a propositional proof arguing for the correctness of the circuit.
 
-          This concept is remarkably simple and CLIP is modular so allows us to use existing checking formats from propositional logic, especially strong proof systems. CLIP has polynomial-size proofs for XOR-pairs which are known to require exponential-size proofs in MICE [Fichte et. al., SAT 2022]. The existence of a strong proof system that can tackle these hard problems was posed as an open problem in [Beyersdorff et al., SAT 2023]. In addition, CLIP systems can p-simulate all other existing #SAT proofs systems (KCPS(#SAT) [Capelli, SAT 19], CPOG [Bryant et. al., SAT, 2023], MICE).
+          This concept is remarkably simple and CLIP is modular so allows us to use existing checking formats from propositional logic, especially strong proof systems. CLIP has polynomial-size proofs for XOR-pairs which are known to require exponential-size proofs in MICE [Fichte et. al., SAT 2022]. The existence of a strong proof system that can tackle these hard problems was posed as an open problem in [Beyersdorff et al., SAT 2020].
 
-          Furthermore, CLIP has a theoretical advantage over the other #SAT proof systems in the sense that CLIP only has lower bounds from its propositional proof system or if P^{#P} is not contained in P/poly, which is a major open problem in circuit complexity.
-
-          CLIP uses unrestricted circuits in its proof as compared to restricted structures used by the existing #SAT proof systems. In this way, CLIP avoids hardness or limitations due to circuit restrictions.
+          The use of CLIP has potential to push forward the state-of-the-art in solving propositional model counting (#SAT) which has major applications in AI, probabilistic inference and more.
         </p>
-          </li>
-        </ul>
-      </li>
-      <li>
-        Sravanthi Chede & Anil Shukla. <b><em>Extending Merge Resolution to a Family of QBF-Proof Systems</em></b>. STACS 2023.
-        <ul>
-          <li> [<a href="https://doi.org/10.4230/LIPIcs.STACS.2023.21" target="_blank" rel="noopener noreferrer">Proceedings</a>], [<span class="abstract-toggle" data-target="abstract2">Abstract</span>]
-        <p id="abstract2" class="abstract-text">
-          Merge Resolution (MRes [Beyersdorff et al. J. Autom. Reason.'2021]) is a recently introduced proof system for false QBFs. Unlike other known QBF proof systems, it builds winning strategies for the universal player (countermodels) within the proofs as merge maps. Merge maps are deterministic branching programs in which isomorphism checking is efficient, as a result MRes is a polynomial time verifiable proof system.
-
-          In this paper, we introduce a family of proof systems MRes-R in which the information of countermodels are stored in any pre-fixed complete representation R. Hence, corresponding to each possible complete representation R, we have a sound and refutationally complete QBF-proof system in MRes-R. To handle these arbitrary representations, we introduce consistency checking rules in MRes-R instead of the isomorphism checking in MRes. As a result these proof systems are not polynomial time verifiable (Non-P). Consequently, the paper shows that using merge maps is too restrictive and with a slight change in rules, it can be replaced with arbitrary representations leading to several interesting proof systems.
-
-          We relate these new systems with the implicit proof system from the algorithm in [Blinkhorn et al. SAT.'2021], which was designed to solve DQBFs (Dependency QBFs) using MRes like clause-strategy pairs. We use the OBDD (Ordered Binary Decision Diagrams) representation suggested in the paper and deduce that `Ordered' versions of the proof systems in MRes-R are indeed polynomial time verifiable.
-
-          On the lower bound side, we lift the lower bound result of regular MRes ([Beyersdorff et al. FSTTCS.'2020]) by showing that the completion principle formulas (CR_n) from [Jonata et al. Theor. Comput. Sci.'2015] which are shown to be hard for regular MRes in [Beyersdorff et al. FSTTCS.'2020], are also hard for any regular proof system in MRes-R.
-
-          Hence, the results of this paper show that the family of proof systems in MRes-R have the power to refute false DQBFs efficiently, which are beyond the power of regular MRes.
-        </p>         </li>
-        </ul>
+        </li>
+      </ul>
       </li>
     </ul>
   </section>
-
-  <section id="Preprints">
-    <h2>Preprints</h2>
-    <ul>
-      <li>
-        Sravanthi Chede, Leroy Chew, Balesh Kumar & Anil Shukla. <b><em>Understanding Nullstellensatz for QBFs</em></b>.
-        <ul>
-          <li>
-             [<a href="https://eccc.weizmann.ac.il/report/2023/129/" target="_blank" rel="noopener noreferrer">ECCC</a>], [<span class="abstract-toggle" data-target="abstract3">Abstract</span>]
-        <p id="abstract3" class="abstract-text">
-          QBF proof systems are routinely adapted from propositional logic along with adjustments for the new quantifications. Existing are two main successful frameworks, the reduction and expansion frameworks, inspired by QCDCL [Zhang et al. ICCAD.'2002] and CEGAR solving [Janota et al. Artif. Intell.'2016] respectively. However, the reduction framework, while immensely useful in line-based proof systems, is not refutationally complete for static proof systems.
-
-Nullstellensatz (NS, [Beame et al. FOCS.'1994]) is a well known static propositional proof system, inspired by Hilbert's theorem [Hilbert Math. Ann.'1893] of the same name. It falls into the category of algebraic proof systems such as the Polynomial Calculus [Book, Krajíček Cam. Uni.'2019, p.162] or the Ideal Proof System (IPS,[Grochow et al. J. ACM.'2018]). In this paper, we initiate the study of the NS proof system for QBFs using the existing expansion (∀Exp) framework and a new "∀Strat" framework. We introduce four new static QBF refutation systems: ∀Exp+NS, ∀Exp+NS', ∀Strat+NS and ∀Strat+NS', which use NS and a more powerful version of NS (NS') with twin variable encoding that allows it to simulate tree-like resolution without an exponential blowup.
-
-We explore relationships among the proposed systems and analyse their proof sizes for a few well-known hard QBF-families. We find that ∀Exp+NS' and ∀Strat+NS' are incomparable. This result is in line with the incomparability result between ∀Exp+Res and Q-Res [Beyersdorff et al. STACS.'2015].
-          </p>
-          </li>
-        </ul>
-      </li>
-      <li>
-        Sravanthi Chede & Anil Shukla. <b><em>Does QRAT simulate IR-calc? QRAT simulation algorithm for ∀Exp+Res cannot be lifted to IR-calc</em></b>.
-        <ul>
-          <li>[<a href="https://eccc.weizmann.ac.il/report/2021/104/" target="_blank" rel="noopener noreferrer">ECCC</a>]</li>
-        </ul>
-      </li>
-    </ul>
-  </section>
-
-  <section id="sideProjects">
-    <h2>Fun Side Projects</h2>
-    <ul>
-      <li>
-        Ranjana Roy Chowdhury, Shivam Gupta & Sravanthi Chede. <b><em>World War III analysis using signed social networks</em></b>. Social Network Analysis and Mining Journal, Volume 11.
-        <ul>
-          <li>
-             [<a href="https://arxiv.org/abs/2105.12460" target="_blank" rel="noopener noreferrer">ArXiv</a>]
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </section>
-
 
   <section id="contact">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:sravanthi.20csz0001@iitrpr.ac.in">sravanthi.20csz0001@iitrpr.ac.in</a>, <a href="mailto:sravanthichede@gmail.com">sravanthichede@gmail.com</a></p>
-        <p>Office: Room 314, CSE Department, IIT Ropar.</p>
-        <p id="cv"><a href="cv.pdf" target="_blank" rel="noopener noreferrer">Download my CV (PDF)</a></p>
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:sravanthi.chede@example.com">sravanthi.chede@example.com</a></p>
+    <p>Phone: +1 (234) 567-8901</p>
   </section>
 
-  <footer>
-      <p>&copy; 2025 Sravanthi Chede | Personal Academic Website</p>
-      <div class="social-links" aria-label="Social links">
-        <a href="https://scholar.google.com" target="_blank" aria-label="Google Scholar">
-          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10..." /></svg>
-        </a>
-        <a href="https://linkedin.com/in/sravanthichede" target="_blank" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.38-1.12 2.5-2.5 2.5S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8h5v14H0V8zm7 0h5v2h.1c.7-1.2 2.4-2.5 5-2.5 5.4 0 6.4 3.5 6.4 8v9H17v-7c0-1.8-.03-4.1-2.5-4.1-2.5 0-2.9 2-2.9 4v7H7V8z"/></svg>
-        </a>
-      </div>
-  </footer>
+  <section id="cv">
+    <h2>Curriculum Vitae</h2>
+    <p><a href="cv.pdf" target="_blank" rel="noopener noreferrer">Download my CV (PDF)</a></p>
+  </section>
+</main>
+
+<footer>
+  <p>Connect with me:</p>
+  <div class="social-links" aria-label="Social and academic profiles">
+    <a href="https://www.linkedin.com/in/sravanthichede" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+      <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 24h5v-16H0v16zm7 0h5v-8c0-2.21 1.79-4 4-4s4 1.79 4 4v8h5v-10c0-4.41-3.59-8-8-8s-8 3.59-8 8v10z"/></svg>
+    </a>
+    <a href="https://dblp.org/pid/123/4567.html" target="_blank" rel="noopener noreferrer" title="DBLP">
+      <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 3H4C2.9 3 2 3.9 2 5v14c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM7 18H5v-2h2v2zm0-4H5v-2h2v2zm0-4H5V8h2v2zm6 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V8h2v2zm6 8h-2v-2h2v2zm0-4h-2v-2h2v2z"/></svg>
+    </a>
+    <a href="https://scholar.google.com/citations?user=YOUR_GOOGLE_SCHOLAR_ID" target="_blank" rel="noopener noreferrer" title="Google Scholar">
+      <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-5.53 0-10 4.47-10 10s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm1 16h-2v-2h2v2zm0-4h-2V6h2v8z"/></svg>
+    </a>
+    <a href="https://orcid.org/0000-0000-0000-0000" target="_blank" rel="noopener noreferrer" title="ORCID">
+      <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 5.52 4.48 10 10 10s10-4.48 10-10c0-5.52-4.48-10-10-10zM7.5 16.5l-3-3 1.41-1.42L7.5 13.67l7.59-7.59L16.5 8.5 7.5 16.5z"/></svg>
+    </a>
+    <a href="https://eccc.weizmann.ac.il/" target="_blank" rel="noopener noreferrer" title="ECCC">
+      <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/><path fill="#FFF" d="M10 16h4v-2h-2v-2h2v-2h-4v6z"/></svg>
+    </a>
+  </div>
+</footer>
 
 <script>
-  // Toggle abstract text visibility
+  // Toggle abstract display
   document.querySelectorAll('.abstract-toggle').forEach(toggle => {
     toggle.addEventListener('click', () => {
       const targetId = toggle.getAttribute('data-target');
       const abstract = document.getElementById(targetId);
       if (abstract.style.display === 'block') {
         abstract.style.display = 'none';
+        toggle.textContent = 'Abstract';
       } else {
         abstract.style.display = 'block';
+        toggle.textContent = 'Hide Abstract';
       }
     });
   });
