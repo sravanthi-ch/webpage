@@ -42,14 +42,11 @@
 
   html, body {
     height: 100%;
-    overflow-x: hidden; /* Prevent horizontal scroll */
-  }
-
-  body {
-    font-family: 'Source Serif Pro', serif;
-    font-size: var(--body-font);
+    overflow-x: hidden;
     background-color: var(--bg-light);
     color: var(--text);
+    font-family: 'Source Serif Pro', serif;
+    font-size: var(--body-font);
     line-height: 1.65;
     transition: var(--transition);
   }
@@ -60,7 +57,6 @@
     padding: 2rem 1rem;
     text-align: center;
 
-    /* MOBILE NAV FIX: display two links per row */
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 0.5rem 1rem;
@@ -71,7 +67,7 @@
     font-size: 1.75rem;
     font-weight: 700;
     margin-bottom: 2rem;
-    grid-column: span 2; /* Make title span full width */
+    grid-column: span 2;
   }
 
   nav a {
@@ -85,8 +81,7 @@
     font-size: 0.95rem;
     border-radius: 4px;
     transition: var(--transition);
-    margin: 0; /* reset margin */
-    width: 100%; /* fill grid cell */
+    width: 100%;
     display: block;
   }
 
@@ -95,18 +90,11 @@
     color: white;
   }
 
-  /* Layout on larger screens */
+  /* Desktop nav as sidebar */
   @media (min-width: 768px) {
-    body {
-      display: flex;
-      min-height: 100vh;
-      flex-direction: column;
-    }
     nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100vh;
+      position: relative; /* no fixed */
+      height: auto;
       width: 220px;
       padding-top: 3rem;
       text-align: left;
@@ -119,24 +107,20 @@
       margin-left: 1rem;
       margin-bottom: 2rem;
       width: 100%;
-      grid-column: unset; /* reset for desktop */
+      grid-column: unset;
     }
     nav a {
-      display: block;
       margin-left: 1rem;
       width: calc(100% - 2rem);
     }
     main {
-      margin-left: 220px;
+      margin-left: 240px; /* leave space for nav */
       padding: 3rem 2rem;
-      flex-grow: 1;
-      max-width: calc(100vw - 220px);
+      max-width: calc(100vw - 240px);
       overflow-x: hidden;
-      min-height: calc(100vh - 90px); /* footer height approx */
     }
   }
 
-  /* Layout on small screens */
   main {
     padding: 2rem 1.5rem;
   }
@@ -153,14 +137,13 @@
     gap: 1.5rem;
   }
 
-  /* On large screens: side-by-side about me */
   @media (min-width: 768px) {
     #about {
       flex-direction: row;
       align-items: center;
       text-align: left;
       max-width: 900px;
-      margin: 0 auto; /* center horizontally in main */
+      margin: 0 auto;
     }
   }
 
@@ -207,7 +190,6 @@
     text-decoration: underline;
     cursor: pointer;
     font-weight: 600;
-    margin-left: 0rem;
     font-size: 0.9rem;
     user-select: none;
     white-space: nowrap;
@@ -223,19 +205,9 @@
     max-width: 85%;
   }
 
-  #contact a {
-    color: var(--accent);
-    font-weight: 600;
-    text-decoration: none;
-    border-bottom: 2px solid transparent;
-    transition: var(--transition);
-  }
-
-  #contact a:hover {
-    color: var(--hover-bg);
-    border-color: var(--accent);
-  }
-  #publications a, #sideProjects a,
+  #contact a,
+  #publications a,
+  #sideProjects a,
   #Preprints a {
     color: var(--accent);
     font-weight: 600;
@@ -244,7 +216,9 @@
     transition: var(--transition);
   }
 
-  #publications a:hover, #sideProjects a:hover,
+  #contact a:hover,
+  #publications a:hover,
+  #sideProjects a:hover,
   #Preprints a:hover {
     color: var(--hover-bg);
     border-color: var(--accent);
@@ -258,18 +232,12 @@
     padding: 1rem 2rem;
     text-align: center;
     border-top: 1px solid #ccc;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    width: 100%;
-  }
-
-  footer p {
-    margin: 0;
+    width: 100vw;
+    box-sizing: border-box;
   }
 
   .social-links {
+    margin-top: 0.5rem;
     display: flex;
     justify-content: center;
     gap: 1.25rem;
@@ -287,23 +255,11 @@
     fill: var(--accent);
   }
 
-  /* SVG icon sizes */
   .social-links svg {
     width: 28px;
     height: 28px;
   }
 
-  @media (min-width: 768px) {
-    footer {
-      text-align: center;
-      padding: 1rem 4rem;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      margin-left: 220px;
-      border-top: 1px solid #ccc;
-    }
-  }
 </style>
 </head>
 <body>
