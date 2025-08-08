@@ -1,348 +1,368 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dr. Jane Doe – Research Scholar</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dr. Jane Doe – Research Scholar</title>
 
-  <!-- ✅ Google Fonts for academic styling -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
 
-  <style>
+<style>
+  :root {
+    --bg-light: #FDF2F1;
+    --bg-dark: #000000;
+    --text: #0C4271;
+    --text-light: #E5E5E5;
+    --heading-color: #0C4271;
+    --accent: #0A81AB;
+    --nav-bg: #0C4271;
+    --hover-bg: #0A81AB;
+    --secondary: #4B5563;
+    --transition: background-color 0.3s ease, color 0.3s ease;
+    --body-font: clamp(1rem, 1.5vw, 1.125rem);
+    --h2-font: clamp(1.75rem, 2.5vw, 2.25rem);
+  }
+
+  @media (prefers-color-scheme: dark) {
     :root {
-      --bg-light: #FDF2F1;
-      --bg-dark: #000000;
-      --text: #0C4271;
-      --text-light: #E5E5E5;
-      --heading-color: #0C4271;
-      --accent: #0A81AB;
+      --bg-light: var(--bg-dark);
+      --text: var(--text-light);
+      --heading-color: #0A81AB;
+      --secondary: #AAAAAA;
       --nav-bg: #0C4271;
-      --hover-bg: #0A81AB;
-      --secondary: #4B5563;
-
-      --transition: background-color 0.3s ease, color 0.3s ease;
-      --body-font: clamp(1rem, 1.5vw, 1.125rem);
-      --h2-font: clamp(1.75rem, 2.5vw, 2.25rem);
     }
+  }
 
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg-light: var(--bg-dark);
-        --text: var(--text-light);
-        --heading-color: #0A81AB;
-        --secondary: #AAAAAA;
-        --nav-bg: #0C4271;
-      }
-    }
+  /* Reset */
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  html, body {
+    height: 100%;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+  }
 
+  body {
+    font-family: 'Source Serif Pro', serif;
+    font-size: var(--body-font);
+    background-color: var(--bg-light);
+    color: var(--text);
+    line-height: 1.65;
+    transition: var(--transition);
+  }
+
+  nav {
+    background: var(--nav-bg);
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+
+  nav h1 {
+    font-family: 'Merriweather', serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+
+  nav a {
+    font-family: 'Inter', sans-serif;
+    display: block;
+    margin: 0.5rem 0;
+    padding: 0.5rem 0.8rem;
+    color: #F9DFDC;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    transition: var(--transition);
+  }
+
+  nav a:hover {
+    background-color: var(--hover-bg);
+    color: white;
+  }
+
+  /* Layout on larger screens */
+  @media (min-width: 768px) {
     body {
-      font-family: 'Source Serif Pro', serif;
-      font-size: var(--body-font);
-      background-color: var(--bg-light);
-      color: var(--text);
-      line-height: 1.65;
-      transition: var(--transition);
+      display: flex;
+      min-height: 100vh;
     }
-
     nav {
-      background: var(--nav-bg);
-      color: white;
-      padding: 1.5rem 1rem;
-      text-align: center;
-    }
-
-    nav h1 {
-      font-family: 'Merriweather', serif;
-      font-size: 1.75rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-
-    nav a {
-      font-family: 'Inter', sans-serif;
-      display: inline-block;
-      margin: 0.4rem 0.6rem;
-      padding: 0.4rem 0.8rem;
-      color: #F9DFDC;
-      text-decoration: none;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-size: 0.95rem;
-      border-radius: 4px;
-      transition: var(--transition);
-    }
-
-    nav a:hover {
-      background-color: var(--hover-bg);
-      color: white;
-    }
-
-    /* Updated to span full width without horizontal scroll */
-    .content-wrapper {
-      margin-left: 0;
-      width: 100vw;
-      max-width: none;
-      padding: 2.5rem 1.5rem;
-      box-sizing: border-box;
-      overflow-x: hidden;
-    }
-
-    section {
-      margin-bottom: 3rem;
-    }
-
-    #about {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 220px;
+      padding-top: 3rem;
+      text-align: left;
       display: flex;
       flex-direction: column;
+      align-items: flex-start;
+    }
+    nav h1 {
+      margin-left: 1rem;
+      margin-bottom: 2rem;
+      width: 100%;
+    }
+    nav a {
+      display: block;
+      margin-left: 1rem;
+      width: calc(100% - 2rem);
+    }
+    main {
+      margin-left: 220px;
+      padding: 3rem 2rem;
+      flex-grow: 1;
+      max-width: calc(100vw - 220px);
+      overflow-x: hidden;
+    }
+  }
+
+  /* Layout on small screens */
+  main {
+    padding: 2rem 1.5rem;
+  }
+
+  section {
+    margin-bottom: 3rem;
+  }
+
+  #about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  /* On large screens: side-by-side about me */
+  @media (min-width: 768px) {
+    #about {
+      flex-direction: row;
       align-items: center;
-      text-align: center;
-      gap: 1.5rem;
+      text-align: left;
+      max-width: 900px;
+      margin: 0 auto; /* center horizontally in main */
     }
+  }
 
-    #about img {
-      width: 180px; /* increased from 140px */
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid var(--nav-bg);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      flex-shrink: 0;
-    }
+  #about img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--nav-bg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+  }
 
-    #about div {
-      margin-left: 1.8rem; /* add space between image and text */
-      max-width: 650px; /* allow more width */
-    }
+  #about div {
+    max-width: 100%;
+  }
 
-    h2 {
-      font-family: 'Merriweather', serif;
-      font-size: var(--h2-font);
-      color: var(--heading-color);
-      border-bottom: 3px solid var(--accent);
-      display: inline-block;
-      margin: 2rem 0 1rem;
-      letter-spacing: 0.5px;
-    }
+  h2 {
+    font-family: 'Merriweather', serif;
+    font-size: var(--h2-font);
+    color: var(--heading-color);
+    border-bottom: 3px solid var(--accent);
+    display: inline-block;
+    margin: 2rem 0 1rem;
+    letter-spacing: 0.5px;
+  }
 
-    p, ul {
-      font-size: 1.05rem;
-      margin-bottom: 1rem;
-    }
+  p, ul {
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+  }
 
-    ul {
-      list-style-type: disc;
-      padding-left: 1.5rem;
-    }
+  ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+  }
 
-    ul li {
-      margin-bottom: 0.5rem;
-      /* Style for the clickable abstract toggles */
-    }
+  ul li {
+    margin-bottom: 0.5rem;
+  }
 
-    .abstract-toggle {
-      color: var(--accent);
-      text-decoration: underline;
-      cursor: pointer;
-      font-weight: 600;
-      margin-left: 0.5rem;
-      font-size: 0.9rem;
-      user-select: none;
-    }
+  .abstract-toggle {
+    color: var(--accent);
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 600;
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
+    user-select: none;
+  }
 
-    .abstract-text {
-      display: none;
-      margin-top: 0.25rem;
-      margin-left: 1.5rem;
-      font-style: italic;
-      color: var(--secondary);
-      font-size: 0.95rem;
-      max-width: 85%;
-    }
+  .abstract-text {
+    display: none;
+    margin-top: 0.25rem;
+    margin-left: 1.5rem;
+    font-style: italic;
+    color: var(--secondary);
+    font-size: 0.95rem;
+    max-width: 85%;
+  }
 
-    #contact a {
-      color: var(--accent);
-      font-weight: 600;
-      text-decoration: none;
-      border-bottom: 2px solid transparent;
-      transition: var(--transition);
-    }
+  #contact a {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: var(--transition);
+  }
 
-    #contact a:hover {
-      color: var(--hover-bg);
-      border-color: var(--accent);
-    }
+  #contact a:hover {
+    color: var(--hover-bg);
+    border-color: var(--accent);
+  }
 
+  footer {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-light);
+    color: var(--secondary);
+    font-size: 0.9rem;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    border-top: 1px solid #ccc;
+  }
+
+  .social-links {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .social-links a {
+    width: 28px;
+    height: 28px;
+    fill: var(--secondary);
+    transition: fill 0.3s;
+  }
+
+  .social-links a:hover {
+    fill: var(--accent);
+  }
+
+  @media (min-width: 768px) {
     footer {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg-light);
-      color: var(--secondary);
-      font-size: 0.9rem;
-      padding: 1.5rem 1rem;
-      text-align: center;
-      border-top: 1px solid #ccc;
+      text-align: left;
+      margin-left: 220px;
+      padding-left: 2rem;
     }
-
-    .social-links {
-      margin-top: 0.5rem;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-    }
-
-    .social-links a {
-      width: 28px;
-      height: 28px;
-      fill: var(--secondary);
-      transition: fill 0.3s;
-    }
-
-    .social-links a:hover {
-      fill: var(--accent);
-    }
-
-    @media (min-width: 768px) {
-      nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 220px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 2rem 1rem;
-      }
-
-      .content-wrapper {
-        margin-left: 220px; /* keep space for nav */
-        width: calc(100vw - 220px); /* fill remaining width */
-        max-width: none;
-        padding: 3rem 2rem;
-        box-sizing: border-box;
-        overflow-x: hidden;
-      }
-
-      #about {
-        flex-direction: row;
-        text-align: left;
-        align-items: center;
-      }
-
-      footer {
-        text-align: left;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <nav>
-    <h1>Sravanthi Chede</h1>
-    <a href="#about">About Me</a>
-    <a href="#research">Research</a>
-    <a href="#publications">Publications</a>
-    <a href="#contact">Contact</a>
-    <a href="#cv">CV</a>
-  </nav>
 
-  <div class="content-wrapper">
-    <main>
-      <section id="about">
-        <img src="profile.png" alt="Dr. Jane Doe Profile Picture" />
-        <div>
-          <h2>About Me</h2>
-          <p>I am a research scholar at XYZ University focusing on the intersection of machine learning, natural language processing, and AI ethics. My work aims to develop interpretable models for real-world language understanding tasks.</p>
-        </div>
-      </section>
+<nav>
+  <h1>Sravanthi Chede</h1>
+  <a href="#about">About Me</a>
+  <a href="#research">Research</a>
+  <a href="#publications">Publications</a>
+  <a href="#contact">Contact</a>
+  <a href="#cv">CV</a>
+</nav>
 
-      <section id="research">
-        <h2>Research Interests</h2>
-        <ul>
-          <li>Natural Language Processing</li>
-          <li>Machine Learning for Social Good</li>
-          <li>Computational Semantics</li>
-          <li>Fairness in AI</li>
-        </ul>
-      </section>
+<main>
+  <section id="about">
+    <img src="profile.png" alt="Dr. Jane Doe Profile Picture" />
+    <div>
+      <h2>About Me</h2>
+      <p>I am a research scholar at XYZ University focusing on the intersection of machine learning, natural language processing, and AI ethics. My work aims to develop interpretable models for real-world language understanding tasks.</p>
+    </div>
+  </section>
 
-      <section id="publications">
-        <h2>Publications</h2>
-        <ul>
-          <li>
-            Sravanthi Chede, Leroy Chew & Anil Shukla. <em>Circuits, Proofs and Propositional Model Counting</em>. FSTTCS 2024.
-            <span class="abstract-toggle" data-target="abstract1">[Abstract]</span>
-            <p id="abstract1" class="abstract-text">
-              In this paper we present a new proof system framework CLIP (Circuit Linear Induction Proposition) for propositional model counting (#SAT). A CLIP proof firstly involves a Boolean circuit, calculating the cumulative function (or running count) of models counted up to a point, and secondly a propositional proof arguing for the correctness of the circuit.
+  <section id="research">
+    <h2>Research Interests</h2>
+    <ul>
+      <li>Natural Language Processing</li>
+      <li>Machine Learning for Social Good</li>
+      <li>Computational Semantics</li>
+      <li>Fairness in AI</li>
+    </ul>
+  </section>
 
-This concept is remarkably simple and CLIP is modular so allows us to use existing checking formats from propositional logic, especially strong proof systems. CLIP has polynomial-size proofs for XOR-pairs which are known to require exponential-size proofs in MICE [Fichte et. al., SAT 2022]. The existence of a strong proof system that can tackle these hard problems was posed as an open problem in [Beyersdorff et al., SAT 2023]. In addition, CLIP systems can p-simulate all other existing #SAT proofs systems (KCPS(#SAT) [Capelli, SAT 19], CPOG [Bryant et. al., SAT, 2023], MICE).
+  <section id="publications">
+    <h2>Publications</h2>
+    <ul>
+      <li>
+        Sravanthi Chede, Leroy Chew & Anil Shukla. <em>Circuits, Proofs and Propositional Model Counting</em>. FSTTCS 2024.
+        <span class="abstract-toggle" data-target="abstract1">[Abstract]</span>
+        <p id="abstract1" class="abstract-text">
+          In this paper we present a new proof system framework CLIP (Circuit Linear Induction Proposition) for propositional model counting (#SAT). A CLIP proof firstly involves a Boolean circuit, calculating the cumulative function (or running count) of models counted up to a point, and secondly a propositional proof arguing for the correctness of the circuit.
 
-Furthermore, CLIP has a theoretical advantage over the other #SAT proof systems in the sense that CLIP only has lower bounds from its propositional proof system or if P^{#P} is not contained in P/poly, which is a major open problem in circuit complexity.
+          This concept is remarkably simple and CLIP is modular so allows us to use existing checking formats from propositional logic, especially strong proof systems. CLIP has polynomial-size proofs for XOR-pairs which are known to require exponential-size proofs in MICE [Fichte et. al., SAT 2022]. The existence of a strong proof system that can tackle these hard problems was posed as an open problem in [Beyersdorff et al., SAT 2023]. In addition, CLIP systems can p-simulate all other existing #SAT proofs systems (KCPS(#SAT) [Capelli, SAT 19], CPOG [Bryant et. al., SAT, 2023], MICE).
 
-CLIP uses unrestricted circuits in its proof as compared to restricted structures used by the existing #SAT proof systems. In this way, CLIP avoids hardness or limitations due to circuit restrictions.
-            </p>
-          </li>
-          <li>
-            Sravanthi Chede & Anil Shukla. <em>Extending Merge Resolution to a Family of QBF-Proof Systems</em>. STACS 2023.
-            <span class="abstract-toggle" data-target="abstract2">[Abstract]</span>
-            <p id="abstract2" class="abstract-text">
-              Merge Resolution (MRes [Beyersdorff et al. J. Autom. Reason.'2021]) is a recently introduced proof system for false QBFs. Unlike other known QBF proof systems, it builds winning strategies for the universal player (countermodels) within the proofs as merge maps. Merge maps are deterministic branching programs in which isomorphism checking is efficient, as a result MRes is a polynomial time verifiable proof system.
+          Furthermore, CLIP has a theoretical advantage over the other #SAT proof systems in the sense that CLIP only has lower bounds from its propositional proof system or if P^{#P} is not contained in P/poly, which is a major open problem in circuit complexity.
 
-In this paper, we introduce a family of proof systems MRes-R in which the information of countermodels are stored in any pre-fixed complete representation R. Hence, corresponding to each possible complete representation R, we have a sound and refutationally complete QBF-proof system in MRes-R. To handle these arbitrary representations, we introduce consistency checking rules in MRes-R instead of the isomorphism checking in MRes. As a result these proof systems are not polynomial time verifiable (Non-P). Consequently, the paper shows that using merge maps is too restrictive and with a slight change in rules, it can be replaced with arbitrary representations leading to several interesting proof systems.
+          CLIP uses unrestricted circuits in its proof as compared to restricted structures used by the existing #SAT proof systems. In this way, CLIP avoids hardness or limitations due to circuit restrictions.
+        </p>
+      </li>
+      <li>
+        Sravanthi Chede & Anil Shukla. <em>Extending Merge Resolution to a Family of QBF-Proof Systems</em>. STACS 2023.
+        <span class="abstract-toggle" data-target="abstract2">[Abstract]</span>
+        <p id="abstract2" class="abstract-text">
+          Merge Resolution (MRes [Beyersdorff et al. J. Autom. Reason.'2021]) is a recently introduced proof system for false QBFs. Unlike other known QBF proof systems, it builds winning strategies for the universal player (countermodels) within the proofs as merge maps. Merge maps are deterministic branching programs in which isomorphism checking is efficient, as a result MRes is a polynomial time verifiable proof system.
 
-We relate these new systems with the implicit proof system from the algorithm in [Blinkhorn et al. SAT.'2021], which was designed to solve DQBFs (Dependency QBFs) using MRes like clause-strategy pairs. We use the OBDD (Ordered Binary Decision Diagrams) representation suggested in the paper and deduce that `Ordered' versions of the proof systems in MRes-R are indeed polynomial time verifiable.
+          In this paper, we introduce a family of proof systems MRes-R in which the information of countermodels are stored in any pre-fixed complete representation R. Hence, corresponding to each possible complete representation R, we have a sound and refutationally complete QBF-proof system in MRes-R. To handle these arbitrary representations, we introduce consistency checking rules in MRes-R instead of the isomorphism checking in MRes. As a result these proof systems are not polynomial time verifiable (Non-P). Consequently, the paper shows that using merge maps is too restrictive and with a slight change in rules, it can be replaced with arbitrary representations leading to several interesting proof systems.
 
-On the lower bound side, we lift the lower bound result of regular MRes ([Beyersdorff et al. FSTTCS.'2020]) by showing that the completion principle formulas (CR_n) from [Jonata et al. Theor. Comput. Sci.'2015] which are shown to be hard for regular MRes in [Beyersdorff et al. FSTTCS.'2020], are also hard for any regular proof system in MRes-R.
+          We relate these new systems with the implicit proof system from the algorithm in [Blinkhorn et al. SAT.'2021], which was designed to solve DQBFs (Dependency QBFs) using MRes like clause-strategy pairs. We use the OBDD (Ordered Binary Decision Diagrams) representation suggested in the paper and deduce that `Ordered' versions of the proof systems in MRes-R are indeed polynomial time verifiable.
 
-Hence, the results of this paper show that the family of proof systems in MRes-R have the power to refute false DQBFs efficiently, which are beyond the power of regular MRes.
-            </p>
-          </li>
-        </ul>
-      </section>
+          On the lower bound side, we lift the lower bound result of regular MRes ([Beyersdorff et al. FSTTCS.'2020]) by showing that the completion principle formulas (CR_n) from [Jonata et al. Theor. Comput. Sci.'2015] which are shown to be hard for regular MRes in [Beyersdorff et al. FSTTCS.'2020], are also hard for any regular proof system in MRes-R.
 
-      <section id="contact">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:sravanthichede@protonmail.com">sravanthichede@protonmail.com</a></p>
-        <p>GitHub: <a href="https://github.com/sravanthichede" target="_blank" rel="noopener noreferrer">github.com/sravanthichede</a></p>
-        <p>Twitter: <a href="https://twitter.com/sravanthichede" target="_blank" rel="noopener noreferrer">@sravanthichede</a></p>
-      </section>
+          Hence, the results of this paper show that the family of proof systems in MRes-R have the power to refute false DQBFs efficiently, which are beyond the power of regular MRes.
+        </p>
+      </li>
+    </ul>
+  </section>
 
-      <section id="cv">
-        <h2>Curriculum Vitae</h2>
-        <p><a href="cv.pdf" target="_blank" rel="noopener noreferrer">Download my CV (PDF)</a></p>
-      </section>
-    </main>
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:sravanthichede@protonmail.com">sravanthichede@protonmail.com</a></p>
+    <p>GitHub: <a href="https://github.com/sravanthichede" target="_blank" rel="noopener noreferrer">github.com/sravanthichede</a></p>
+    <p>Twitter: <a href="https://twitter.com/sravanthichede" target="_blank" rel="noopener noreferrer">@sravanthichede</a></p>
+  </section>
 
-    <footer>
-      <p>© 2025 Sravanthi Chede</p>
-      <div class="social-links">
-        <a href="https://github.com/sravanthichede" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-          <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 0.297c-6.627 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.415-4.033-1.415-.546-1.387-1.333-1.757-1.333-1.757-1.089-.745.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.807 1.305 3.492.997.107-.776.418-1.305.76-1.605-2.665-.304-5.466-1.332-5.466-5.93 0-1.31.467-2.38 1.235-3.22-.124-.303-.535-1.522.117-3.176 0 0 1.008-.322 3.301 1.23a11.47 11.47 0 0 1 3.003-.403c1.018.005 2.045.138 3.003.403 2.29-1.552 3.296-1.23 3.296-1.23.655 1.654.244 2.873.12 3.176.77.84 1.233 1.91 1.233 3.22 0 4.61-2.807 5.625-5.48 5.92.43.372.823 1.1.823 2.22v3.293c0 .32.216.694.824.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-        </a>
-      </div>
-    </footer>
-  </div>
+  <section id="cv">
+    <h2>Curriculum Vitae</h2>
+    <p><a href="cv.pdf" target="_blank" rel="noopener noreferrer">Download my CV (PDF)</a></p>
+  </section>
 
-  <script>
-    // Toggle abstracts on click
-    document.querySelectorAll('.abstract-toggle').forEach(toggle => {
-      toggle.addEventListener('click', () => {
-        const targetId = toggle.getAttribute('data-target');
-        const abstract = document.getElementById(targetId);
-        if (abstract.style.display === 'block') {
-          abstract.style.display = 'none';
-          toggle.textContent = '[Abstract]';
-        } else {
-          abstract.style.display = 'block';
-          toggle.textContent = '[Hide Abstract]';
-        }
-      });
+  <footer>
+    <p>© 2025 Sravanthi Chede</p>
+    <div class="social-links">
+      <a href="https://github.com/sravanthichede" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 0.297c-6.627 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.415-4.033-1.415-.546-1.387-1.333-1.757-1.333-1.757-1.089-.745.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.807 1.305 3.492.997.107-.776.418-1.305.76-1.605-2.665-.304-5.466-1.332-5.466-5.93 0-1.31.467-2.38 1.235-3.22-.124-.303-.535-1.522.117-3.176 0 0 1.008-.322 3.301 1.23a11.47 11.47 0 0 1 3.003-.403c1.018.005 2.045.138 3.003.403 2.29-1.552 3.296-1.23 3.296-1.23.655 1.654.244 2.873.12 3.176.77.84 1.233 1.91 1.233 3.22 0 4.61-2.807 5.625-5.48 5.92.43.372.823 1.1.823 2.22v3.293c0 .32.216.694.824.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+    </div>
+  </footer>
+</main>
+
+<script>
+  // Toggle abstracts on click
+  document.querySelectorAll('.abstract-toggle').forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const targetId = toggle.getAttribute('data-target');
+      const abstract = document.getElementById(targetId);
+      if (abstract.style.display === 'block') {
+        abstract.style.display = 'none';
+        toggle.textContent = '[Abstract]';
+      } else {
+        abstract.style.display = 'block';
+        toggle.textContent = '[Hide Abstract]';
+      }
     });
-  </script>
+  });
+</script>
+
 </body>
 </html>
