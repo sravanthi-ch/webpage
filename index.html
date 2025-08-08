@@ -303,10 +303,10 @@
     <h2>Publications</h2>
     <ul>
       <li>
-        Sravanthi Chede, Leroy Chew & Anil Shukla. <em>Circuits, Proofs and Propositional Model Counting</em>. FSTTCS 2024.
+        Sravanthi Chede, Leroy Chew & Anil Shukla. <b><em>Circuits, Proofs and Propositional Model Counting</em></b>. FSTTCS 2024.
         <ul>
           <li>
-            [Proceedings], <span class="abstract-toggle" data-target="abstract1">[Abstract]</span>
+            [<a href="https://doi.org/10.4230/LIPIcs.FSTTCS.2024.18">Proceedings</a>], [<span class="abstract-toggle" data-target="abstract1">Abstract</span>]
         <p id="abstract1" class="abstract-text">
           In this paper we present a new proof system framework CLIP (Circuit Linear Induction Proposition) for propositional model counting (#SAT). A CLIP proof firstly involves a Boolean circuit, calculating the cumulative function (or running count) of models counted up to a point, and secondly a propositional proof arguing for the correctness of the circuit.
 
@@ -320,9 +320,9 @@
         </ul>
       </li>
       <li>
-        Sravanthi Chede & Anil Shukla. <em>Extending Merge Resolution to a Family of QBF-Proof Systems</em>. STACS 2023.
+        Sravanthi Chede & Anil Shukla. <b><em>Extending Merge Resolution to a Family of QBF-Proof Systems</em></b>. STACS 2023.
         <ul>
-          <li>[Proceedings],  <span class="abstract-toggle" data-target="abstract2">[Abstract]</span>
+          <li>[Proceedings],  [<span class="abstract-toggle" data-target="abstract2">Abstract</span>]
         <p id="abstract2" class="abstract-text">
           Merge Resolution (MRes [Beyersdorff et al. J. Autom. Reason.'2021]) is a recently introduced proof system for false QBFs. Unlike other known QBF proof systems, it builds winning strategies for the universal player (countermodels) within the proofs as merge maps. Merge maps are deterministic branching programs in which isomorphism checking is efficient, as a result MRes is a polynomial time verifiable proof system.
 
@@ -339,10 +339,38 @@
     </ul>
   </section>
 
+  <section id="Preprints">
+    <h2>Preprints</h2>
+    <ul>
+      <li>
+        Sravanthi Chede, Leroy Chew, Balesh Kumar & Anil Shukla <b><em>Understanding Nullstellensatz for QBFs</em></b>.
+        <ul>
+          <li>
+            [ECCC], [<span class="abstract-toggle" data-target="abstract1">Abstract</span>]
+        <p id="abstract1" class="abstract-text">
+          QBF proof systems are routinely adapted from propositional logic along with adjustments for the new quantifications. Existing are two main successful frameworks, the reduction and expansion frameworks, inspired by QCDCL [Zhang et al. ICCAD.'2002] and CEGAR solving [Janota et al. Artif. Intell.'2016] respectively. However, the reduction framework, while immensely useful in line-based proof systems, is not refutationally complete for static proof systems.
+
+Nullstellensatz (NS, [Beame et al. FOCS.'1994]) is a well known static propositional proof system, inspired by Hilbert's theorem [Hilbert Math. Ann.'1893] of the same name. It falls into the category of algebraic proof systems such as the Polynomial Calculus [Book, Krajíček Cam. Uni.'2019, p.162] or the Ideal Proof System (IPS,[Grochow et al. J. ACM.'2018]). In this paper, we initiate the study of the NS proof system for QBFs using the existing expansion (∀Exp) framework and a new "∀Strat" framework. We introduce four new static QBF refutation systems: ∀Exp+NS, ∀Exp+NS', ∀Strat+NS and ∀Strat+NS', which use NS and a more powerful version of NS (NS') with twin variable encoding that allows it to simulate tree-like resolution without an exponential blowup.
+
+We explore relationships among the proposed systems and analyse their proof sizes for a few well-known hard QBF-families. We find that ∀Exp+NS' and ∀Strat+NS' are incomparable. This result is in line with the incomparability result between ∀Exp+Res and Q-Res [Beyersdorff et al. STACS.'2015].
+          </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        Sravanthi Chede & Anil Shukla. <b><em>Does QRAT simulate IR-calc? QRAT simulation algorithm for ∀Exp+Res cannot be lifted to IR-calc</em></b>.
+        <ul>
+          <li>[ECCC]</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+
   <section id="contact">
         <h2>Contact</h2>
-        <p>Email: <a href="mailto:jane.doe@xyzuniversity.edu">jane.doe@xyzuniversity.edu</a></p>
-        <p>Office: Room 314, AI Research Building, XYZ University</p>
+        <p>Email: <a href="mailto:sravanthi.20csz0001@iitrpr.ac.in">sravanthi.20csz0001@iitrpr.ac.in</a></p>
+        <p>Office: Room 314, CSE Department, IIT Ropar.</p>
         <p id="cv"><a href="cv.pdf" target="_blank" rel="noopener noreferrer">Download my CV (PDF)</a></p>
   </section>
 
