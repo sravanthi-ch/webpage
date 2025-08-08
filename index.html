@@ -135,27 +135,6 @@
       margin-bottom: 0.5rem;
     }
 
-    /* Style for the clickable abstract toggles */
-    .abstract-toggle {
-      color: var(--accent);
-      text-decoration: underline;
-      cursor: pointer;
-      font-weight: 600;
-      margin-left: 0.5rem;
-      font-size: 0.9rem;
-      user-select: none;
-    }
-
-    .abstract-text {
-      display: none;
-      margin-top: 0.25rem;
-      margin-left: 1.5rem;
-      font-style: italic;
-      color: var(--secondary);
-      font-size: 0.95rem;
-      max-width: 85%;
-    }
-
     #contact a {
       color: var(--accent);
       font-weight: 600;
@@ -212,7 +191,10 @@
 
       .content-wrapper {
         margin-left: 220px;
-        padding: 3rem 4rem;
+        max-width: calc(100vw - 220px);
+        padding: 3rem 2rem;
+        box-sizing: border-box;
+        overflow-x: hidden;
       }
 
       #about {
@@ -244,7 +226,7 @@
   <div class="content-wrapper">
     <main>
       <section id="about">
-        <img src="profile.png" alt="Sravanthi Chede Profile Picture" />
+        <img src="profile.png" alt="Dr. Jane Doe Profile Picture" />
         <div>
           <h2>About Me</h2>
           <p>I am a research scholar at XYZ University focusing on the intersection of machine learning, natural language processing, and AI ethics. My work aims to develop interpretable models for real-world language understanding tasks.</p>
@@ -264,32 +246,14 @@
       <section id="publications">
         <h2>Publications</h2>
         <ul>
-          <li>
-            Sravanthi Chede, Leroy Chew & Anil Shukla. <em>Circuits, Proofs and Propositional Model Counting</em>. FSTTCS 2024.
-            <span class="abstract-toggle" data-target="abstract1">[Abstract]</span>
-            <p id="abstract1" class="abstract-text">
-              In this paper we present a new proof system framework CLIP (Circuit Linear Induction Proposition) for propositional model counting (#SAT). A CLIP proof firstly involves a Boolean circuit, calculating the cumulative function (or running count) of models counted up to a point, and secondly a propositional proof arguing for the correctness of the circuit.
-
-This concept is remarkably simple and CLIP is modular so allows us to use existing checking formats from propositional logic, especially strong proof systems. CLIP has polynomial-size proofs for XOR-pairs which are known to require exponential-size proofs in MICE [Fichte et. al., SAT 2022]. The existence of a strong proof system that can tackle these hard problems was posed as an open problem in [Beyersdorff et al., SAT 2023]. In addition, CLIP systems can p-simulate all other existing #SAT proofs systems (KCPS(#SAT) [Capelli, SAT 19], CPOG [Bryant et. al., SAT, 2023], MICE).
-
-Furthermore, CLIP has a theoretical advantage over the other #SAT proof systems in the sense that CLIP only has lower bounds from its propositional proof system or if P^{#P} is not contained in P/poly, which is a major open problem in circuit complexity.
-
-CLIP uses unrestricted circuits in its proof as compared to restricted structures used by the existing #SAT proof systems. In this way, CLIP avoids hardness or limitations due to circuit restrictions.
-            </p>
-          </li>
-          <li>
-            Sravanthi Chede & Anil Shukla. <em>Extending Merge Resolution to a Family of QBF-Proof Systems</em>. STACS 2023.
-            <span class="abstract-toggle" data-target="abstract2">[Abstract]</span>
-            <p id="abstract2" class="abstract-text">
-              Merge Resolution (MRes [Beyersdorff et al. J. Autom. Reason.'2021]) is a recently introduced proof system for false QBFs. Unlike other known QBF proof systems, it builds winning strategies for the universal player (countermodels) within the proofs as merge maps. Merge maps are deterministic branching programs in which isomorphism checking is efficient, as a result MRes is a polynomial time verifiable proof system.
-
-In this paper, we introduce a family of proof systems MRes-R in which the information of countermodels are stored in any pre-fixed complete representation R. Hence, corresponding to each possible complete representation R, we have a sound and refutationally complete QBF-proof system in MRes-R. To handle these arbitrary representations, we introduce consistency checking rules in MRes-R instead of the isomorphism checking in MRes. As a result these proof systems are not polynomial time verifiable (Non-P). Consequently, the paper shows that using merge maps is too restrictive and with a slight change in rules, it can be replaced with arbitrary representations leading to several interesting proof systems.
-
-We relate these new systems with the implicit proof system from the algorithm in [Blinkhorn et al. SAT.'2021], which was designed to solve DQBFs (Dependency QBFs) using MRes like clause-strategy pairs. We use the OBDD (Ordered Binary Decision Diagrams) representation suggested in the paper and deduce that `Ordered' versions of the proof systems in MRes-R are indeed polynomial time verifiable.
-
-On the lower bound side, we lift the lower bound result of regular MRes ([Beyersdorff et al. FSTTCS.'2020]) by showing that the completion principle formulas (CR_n) from [Jonata et al. Theor. Comput. Sci.'2015] which are shown to be hard for regular MRes in [Beyersdorff et al. FSTTCS.'2020], are also hard for any regular proof system in MRes-R. Thereby, the paper lifts the lower bound of regular MRes to an entire class of proof systems, which use some complete representations, including those undiscovered, instead of only merge maps. Thereby proving that the hardness of CR_n formulas is intact even after changing the weak isomorphism checking in MRes to the stronger consistency checking in MRes-R.
-            </p>
-          </li>
+          <li>Sravanthi Chede, Leroy Chew & Anil Shukla. <em>Circuits, Proofs and Propositional Model Counting</em>. FSTTCS 2024.</li>
+          <ul>
+            <li>[Proceedings], [Abstract]</li>
+          </ul>
+          <li>Sravanthi Chede & Anil Shukla. <em>Extending Merge Resolution to a Family of QBF-Proof Systems</em>. STACS 2023.</li>
+          <ul>
+            <li>[Proceedings], [Abstract]</li>
+          </ul>
         </ul>
       </section>
 
@@ -302,7 +266,7 @@ On the lower bound side, we lift the lower bound result of regular MRes ([Beyers
     </main>
 
     <footer>
-      <p>&copy; 2025 Sravanthi Chede | Personal Academic Website</p>
+      <p>&copy; 2025 Dr. Jane Doe | Personal Academic Website</p>
       <div class="social-links" aria-label="Social links">
         <a href="https://scholar.google.com" target="_blank" aria-label="Google Scholar">
           <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 5.94 2 10.5c0 4.16 3.93 7.5 9 7.5 1.57 0 3.03-.43 4.26-1.17l-1.07-1.28c-.8.48-1.78.72-2.8.72-3.64 0-6.6-2.2-6.6-5.1 0-2.63 2.65-4.7 6.2-4.7 3.25 0 5.6 1.75 5.6 4.15 0 1.25-.84 2.36-2.08 2.78v-2.09h-1.83v5.68h3.3l1.03-1.39a8.75 8.75 0 0 0 2.6-6.11C22 6.4 17.52 2 12 2z"/></svg>
@@ -310,20 +274,5 @@ On the lower bound side, we lift the lower bound result of regular MRes ([Beyers
       </div>
     </footer>
   </div>
-
-  <script>
-    // Toggle abstract paragraphs on clicking [Abstract] text
-    document.querySelectorAll('.abstract-toggle').forEach(toggle => {
-      toggle.addEventListener('click', () => {
-        const targetId = toggle.getAttribute('data-target');
-        const abstractPara = document.getElementById(targetId);
-        if (abstractPara.style.display === 'block') {
-          abstractPara.style.display = 'none';
-        } else {
-          abstractPara.style.display = 'block';
-        }
-      });
-    });
-  </script>
 </body>
 </html>
