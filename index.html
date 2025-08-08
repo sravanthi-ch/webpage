@@ -59,6 +59,11 @@
     color: white;
     padding: 2rem 1rem;
     text-align: center;
+
+    /* MOBILE NAV FIX: display two links per row */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem 1rem;
   }
 
   nav h1 {
@@ -66,12 +71,11 @@
     font-size: 1.75rem;
     font-weight: 700;
     margin-bottom: 2rem;
+    grid-column: span 2; /* Make title span full width */
   }
 
   nav a {
     font-family: 'Inter', sans-serif;
-    display: block;
-    margin: 0.5rem 0;
     padding: 0.5rem 0.8rem;
     color: #F9DFDC;
     text-decoration: none;
@@ -81,6 +85,9 @@
     font-size: 0.95rem;
     border-radius: 4px;
     transition: var(--transition);
+    margin: 0; /* reset margin */
+    width: 100%; /* fill grid cell */
+    display: block;
   }
 
   nav a:hover {
@@ -110,6 +117,7 @@
       margin-left: 1rem;
       margin-bottom: 2rem;
       width: 100%;
+      grid-column: unset; /* reset for desktop */
     }
     nav a {
       display: block;
@@ -342,24 +350,24 @@
       <p>&copy; 2025 Sravanthi Chede | Personal Academic Website</p>
       <div class="social-links" aria-label="Social links">
         <a href="https://scholar.google.com" target="_blank" aria-label="Google Scholar">
-          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 5.94 2 10.5c0 4.16 3.93 7.5 9 7.5 1.57 0 3.03-.43 4.26-1.17l-1.07-1.28c-.8.48-1.78.72-2.8.72-3.64 0-6.6-2.2-6.6-5.1 0-2.63 2.65-4.7 6.2-4.7 3.25 0 5.6 1.75 5.6 4.15 0 1.25-.84 2.36-2.08 2.78v-2.09h-1.83v5.68h3.3l1.03-1.39a8.75 8.75 0 0 0 2.6-6.11C22 6.4 17.52 2 12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10..." /></svg>
+        </a>
+        <a href="https://linkedin.com/in/sravanthichede" target="_blank" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.38-1.12 2.5-2.5 2.5S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8h5v14H0V8zm7 0h5v2h.1c.7-1.2 2.4-2.5 5-2.5 5.4 0 6.4 3.5 6.4 8v9H17v-7c0-1.8-.03-4.1-2.5-4.1-2.5 0-2.9 2-2.9 4v7H7V8z"/></svg>
         </a>
       </div>
-    </footer>
-</main>
+  </footer>
 
 <script>
-  // Toggle abstracts on click
+  // Toggle abstract text visibility
   document.querySelectorAll('.abstract-toggle').forEach(toggle => {
     toggle.addEventListener('click', () => {
       const targetId = toggle.getAttribute('data-target');
       const abstract = document.getElementById(targetId);
       if (abstract.style.display === 'block') {
         abstract.style.display = 'none';
-        toggle.textContent = '[Abstract]';
       } else {
         abstract.style.display = 'block';
-        toggle.textContent = '[Hide Abstract]';
       }
     });
   });
