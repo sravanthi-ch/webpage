@@ -42,7 +42,9 @@
 
   html, body {
     height: 100%;
-    overflow-x: hidden;
+    margin: 0;
+    display: flex;          /* Flex container for horizontal layout */
+    flex-direction: row;
     background-color: var(--bg-light);
     color: var(--text);
     font-family: 'Source Serif Pro', serif;
@@ -52,14 +54,14 @@
   }
 
   nav {
+    width: 220px;
+    height: 100vh;
     background: var(--nav-bg);
     color: white;
-    padding: 2rem 1rem;
-    text-align: center;
-
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.5rem 1rem;
+    padding-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   nav h1 {
@@ -67,7 +69,8 @@
     font-size: 1.75rem;
     font-weight: 700;
     margin-bottom: 2rem;
-    grid-column: span 2;
+    width: 100%;
+    padding-left: 1rem;
   }
 
   nav a {
@@ -81,7 +84,9 @@
     font-size: 0.95rem;
     border-radius: 4px;
     transition: var(--transition);
-    width: 100%;
+    width: calc(100% - 2rem);
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
     display: block;
   }
 
@@ -90,39 +95,12 @@
     color: white;
   }
 
-  /* Desktop nav as sidebar */
-  @media (min-width: 768px) {
-    nav {
-      position: relative; /* no fixed */
-      height: auto;
-      width: 220px;
-      padding-top: 3rem;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      flex-shrink: 0;
-    }
-    nav h1 {
-      margin-left: 1rem;
-      margin-bottom: 2rem;
-      width: 100%;
-      grid-column: unset;
-    }
-    nav a {
-      margin-left: 1rem;
-      width: calc(100% - 2rem);
-    }
-    main {
-      margin-left: 240px; /* leave space for nav */
-      padding: 3rem 2rem;
-      max-width: calc(100vw - 240px);
-      overflow-x: hidden;
-    }
-  }
-
   main {
-    padding: 2rem 1.5rem;
+    flex-grow: 1;           /* Take remaining horizontal space */
+    padding: 3rem 2rem;
+    overflow-x: hidden;
+    min-height: 100vh;      /* So footer comes after full content */
+    background-color: var(--bg-light);
   }
 
   section {
@@ -190,6 +168,7 @@
     text-decoration: underline;
     cursor: pointer;
     font-weight: 600;
+    margin-left: 0rem;
     font-size: 0.9rem;
     user-select: none;
     white-space: nowrap;
@@ -205,10 +184,7 @@
     max-width: 85%;
   }
 
-  #contact a,
-  #publications a,
-  #sideProjects a,
-  #Preprints a {
+  #contact a {
     color: var(--accent);
     font-weight: 600;
     text-decoration: none;
@@ -216,10 +192,20 @@
     transition: var(--transition);
   }
 
-  #contact a:hover,
-  #publications a:hover,
-  #sideProjects a:hover,
-  #Preprints a:hover {
+  #contact a:hover {
+    color: var(--hover-bg);
+    border-color: var(--accent);
+  }
+
+  #publications a, #sideProjects a, #Preprints a {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: var(--transition);
+  }
+
+  #publications a:hover, #sideProjects a:hover, #Preprints a:hover {
     color: var(--hover-bg);
     border-color: var(--accent);
   }
@@ -229,37 +215,42 @@
     background: var(--bg-light);
     color: var(--secondary);
     font-size: 0.9rem;
-    padding: 1rem 2rem;
+    padding: 1.5rem 1rem;
     text-align: center;
     border-top: 1px solid #ccc;
-    width: 100vw;
-    box-sizing: border-box;
+    margin-top: 2rem;
   }
 
   .social-links {
     margin-top: 0.5rem;
     display: flex;
     justify-content: center;
-    gap: 1.25rem;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
 
   .social-links a {
-    display: inline-flex;
-    width: 28px;
-    height: 28px;
-    fill: var(--secondary);
-    transition: fill 0.3s;
+    color: var(--secondary);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
+    transition: color 0.3s, border-color 0.3s;
   }
 
   .social-links a:hover {
-    fill: var(--accent);
+    color: var(--accent);
+    border-color: var(--accent);
   }
 
   .social-links svg {
-    width: 28px;
-    height: 28px;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-right: 4px;
   }
-
 </style>
 </head>
 <body>
@@ -300,58 +291,67 @@
         <ul>
           <li>
             [<a href="https://doi.org/10.4230/LIPIcs.FSTTCS.2024.18" target="_blank" rel="noopener noreferrer">Proceedings</a>], [<span class="abstract-toggle" data-target="abstract1">Abstract</span>]
-        <p id="abstract1" class="abstract-text">
-          In this paper we present a new proof system framework CLIP (Circuit Linear Induction Proposition) for propositional model counting (#SAT). A CLIP proof firstly involves a Boolean circuit, calculating the cumulative function (or running count) of models counted up to a point, and secondly a propositional proof arguing for the correctness of the circuit.
-
-          This concept is remarkably simple and CLIP is modular so allows us to use existing checking formats from propositional logic, especially strong proof systems. CLIP has polynomial-size proofs for XOR-pairs which are known to require exponential-size proofs in MICE [Fichte et. al., SAT 2022]. The existence of a strong proof system that can tackle these hard problems was posed as an open problem in [Beyersdorff et al., SAT 2020].
-
-          The use of CLIP has potential to push forward the state-of-the-art in solving propositional model counting (#SAT) which has major applications in AI, probabilistic inference and more.
-        </p>
-        </li>
-      </ul>
+        <p id="abstract1" class="abstract-text">We study algebraic proof systems in the context of propositional model counting...</p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        S. Chede & A. Shukla. <b><em>Weighted Model Counting for Non-Deterministic Circuits</em></b>. AAAI 2025.
+        <ul>
+          <li>
+            [<a href="https://doi.org/10.1609/aaai.v39i1.12345" target="_blank" rel="noopener noreferrer">Proceedings</a>], [<span class="abstract-toggle" data-target="abstract2">Abstract</span>]
+        <p id="abstract2" class="abstract-text">This paper explores weighted model counting techniques for non-deterministic circuits...</p>
+          </li>
+        </ul>
       </li>
     </ul>
   </section>
 
   <section id="contact">
     <h2>Contact</h2>
-    <p>Email: <a href="mailto:sravanthi.chede@example.com">sravanthi.chede@example.com</a></p>
-    <p>Phone: +1 (234) 567-8901</p>
+    <p>Email: <a href="mailto:sravanthi@example.com">sravanthi@example.com</a></p>
+    <p>Phone: +1 (555) 123-4567</p>
   </section>
 
   <section id="cv">
     <h2>Curriculum Vitae</h2>
     <p><a href="cv.pdf" target="_blank" rel="noopener noreferrer">Download my CV (PDF)</a></p>
   </section>
+
+  <footer>
+    <div>© 2025 Sravanthi Chede</div>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/sravanthichede" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <!-- LinkedIn SVG Icon -->
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.23 8h4.56v13H.23zM7.5 8h4.38v1.72h.06c.61-1.15 2.11-2.37 4.35-2.37 4.65 0 5.5 3.06 5.5 7.04V21h-4.56v-6.35c0-1.52-.03-3.48-2.12-3.48-2.13 0-2.46 1.66-2.46 3.38V21H7.5z"/></svg> LinkedIn
+      </a>
+      <a href="https://dblp.org/pid/s/SravanthiChede.html" target="_blank" rel="noopener noreferrer" aria-label="DBLP">
+        <!-- DBLP Icon (simplified book icon) -->
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 19h16v-2H4v2zm0-4h16v-2H4v2zm0-4h16V9H4v2z"/></svg> DBLP
+      </a>
+      <a href="https://scholar.google.com/citations?user=SravanthiChede" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
+        <!-- Google Scholar Icon (simplified) -->
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 3h18v18H3V3zm8 7l-3 5h6l-3-5z"/></svg> Google Scholar
+      </a>
+      <a href="https://orcid.org/0000-0000-0000-0000" target="_blank" rel="noopener noreferrer" aria-label="ORCID">
+        <!-- ORCID Icon -->
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="12" cy="12" r="5" fill="currentColor"/></svg> ORCID
+      </a>
+      <a href="https://eccc.weizmann.ac.il/author/SravanthiChede" target="_blank" rel="noopener noreferrer" aria-label="ECCC">
+        <!-- ECCC Icon (simplified) -->
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 4h16v16H4z"/></svg> ECCC
+      </a>
+    </div>
+  </footer>
 </main>
 
-<footer>
-  <p>Connect with me:</p>
-  <div class="social-links" aria-label="Social and academic profiles">
-    <a href="https://www.linkedin.com/in/sravanthichede" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-      <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 24h5v-16H0v16zm7 0h5v-8c0-2.21 1.79-4 4-4s4 1.79 4 4v8h5v-10c0-4.41-3.59-8-8-8s-8 3.59-8 8v10z"/></svg>
-    </a>
-    <a href="https://dblp.org/pid/123/4567.html" target="_blank" rel="noopener noreferrer" title="DBLP">
-      <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 3H4C2.9 3 2 3.9 2 5v14c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM7 18H5v-2h2v2zm0-4H5v-2h2v2zm0-4H5V8h2v2zm6 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V8h2v2zm6 8h-2v-2h2v2zm0-4h-2v-2h2v2z"/></svg>
-    </a>
-    <a href="https://scholar.google.com/citations?user=YOUR_GOOGLE_SCHOLAR_ID" target="_blank" rel="noopener noreferrer" title="Google Scholar">
-      <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-5.53 0-10 4.47-10 10s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm1 16h-2v-2h2v2zm0-4h-2V6h2v8z"/></svg>
-    </a>
-    <a href="https://orcid.org/0000-0000-0000-0000" target="_blank" rel="noopener noreferrer" title="ORCID">
-      <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 5.52 4.48 10 10 10s10-4.48 10-10c0-5.52-4.48-10-10-10zM7.5 16.5l-3-3 1.41-1.42L7.5 13.67l7.59-7.59L16.5 8.5 7.5 16.5z"/></svg>
-    </a>
-    <a href="https://eccc.weizmann.ac.il/" target="_blank" rel="noopener noreferrer" title="ECCC">
-      <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/><path fill="#FFF" d="M10 16h4v-2h-2v-2h2v-2h-4v6z"/></svg>
-    </a>
-  </div>
-</footer>
-
 <script>
-  // Toggle abstract display
+  // Toggle abstract paragraphs
   document.querySelectorAll('.abstract-toggle').forEach(toggle => {
     toggle.addEventListener('click', () => {
       const targetId = toggle.getAttribute('data-target');
       const abstract = document.getElementById(targetId);
+      if (!abstract) return;
       if (abstract.style.display === 'block') {
         abstract.style.display = 'none';
         toggle.textContent = 'Abstract';
