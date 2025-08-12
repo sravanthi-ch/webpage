@@ -396,7 +396,7 @@ footer {
         <ul>
           <li>
             [<a href="https://doi.org/10.4230/LIPIcs.FSTTCS.2024.18" target="_blank" rel="noopener noreferrer">Proceedings</a>], [<span class="abstract-toggle" data-target="abstract1">Abstract</span>]
-        <p id="abstract1" class="abstract-text">
+        <p id="abstract1" class="abstract-text" style="text-align: justify;">
           In this paper we present a new proof system framework CLIP (Circuit Linear Induction Proposition) for propositional model counting (#SAT). A CLIP proof firstly involves a Boolean circuit, calculating the cumulative function (or running count) of models counted up to a point, and secondly a propositional proof arguing for the correctness of the circuit.<br>
 
           This concept is remarkably simple and CLIP is modular so allows us to use existing checking formats from propositional logic, especially strong proof systems. CLIP has polynomial-size proofs for XOR-pairs which are known to require exponential-size proofs in MICE [Fichte et. al., SAT 2022]. The existence of a strong proof system that can tackle these hard problems was posed as an open problem in [Beyersdorff et al., SAT 2023]. In addition, CLIP systems can p-simulate all other existing #SAT proofs systems (KCPS(#SAT) [Capelli, SAT 19], CPOG [Bryant et. al., SAT, 2023], MICE).<br>
@@ -412,7 +412,7 @@ footer {
         Sravanthi Chede & Anil Shukla. <b><em>Extending Merge Resolution to a Family of QBF-Proof Systems</em></b>. STACS 2023.
         <ul>
           <li> [<a href="https://doi.org/10.4230/LIPIcs.STACS.2023.21" target="_blank" rel="noopener noreferrer">Proceedings</a>], [<span class="abstract-toggle" data-target="abstract2">Abstract</span>]
-        <p id="abstract2" class="abstract-text">
+        <p id="abstract2" class="abstract-text" style="text-align: justify;">
           Merge Resolution (MRes [Beyersdorff et al. J. Autom. Reason.'2021]) is a recently introduced proof system for false QBFs. Unlike other known QBF proof systems, it builds winning strategies for the universal player (countermodels) within the proofs as merge maps. Merge maps are deterministic branching programs in which isomorphism checking is efficient, as a result MRes is a polynomial time verifiable proof system.<br>
 
           In this paper, we introduce a family of proof systems MRes-R in which the information of countermodels are stored in any pre-fixed complete representation R. Hence, corresponding to each possible complete representation R, we have a sound and refutationally complete QBF-proof system in MRes-R. To handle these arbitrary representations, we introduce consistency checking rules in MRes-R instead of the isomorphism checking in MRes. As a result these proof systems are not polynomial time verifiable (Non-P). Consequently, the paper shows that using merge maps is too restrictive and with a slight change in rules, it can be replaced with arbitrary representations leading to several interesting proof systems.<br>
@@ -435,9 +435,9 @@ footer {
         Sravanthi Chede & Anil Shukla. <b><em>Extending Merge Resolution to a Family of QBF-Proof Systems</em></b>. An Extended version of this paper is under review in a Journal.
         <ul>
           <li>
-            [<span class="abstract-toggle" data-target="abstract4">Abstract</span>]
-        <p id="abstract4" class="abstract-text">
-			abcd
+            [<span class="abstract-toggle" data-target="abstract4">Summary</span>]
+        <p id="abstract4" class="abstract-text" style="text-align: justify;">
+			In this manuscript, we additionally show that Regular versions of our systems are exponential stronger than that of the MRes proof system.
         </p>
           </li>
         </ul>
@@ -454,7 +454,7 @@ footer {
         <ul>
           <li>
              [<a href="https://eccc.weizmann.ac.il/report/2023/129/" target="_blank" rel="noopener noreferrer">ECCC</a>], [<span class="abstract-toggle" data-target="abstract3">Abstract</span>]
-        <p id="abstract3" class="abstract-text">
+        <p id="abstract3" class="abstract-text" style="text-align: justify;">
           QBF proof systems are routinely adapted from propositional logic along with adjustments for the new quantifications. Existing are two main successful frameworks, the reduction and expansion frameworks, inspired by QCDCL [Zhang et al. ICCAD.'2002] and CEGAR solving [Janota et al. Artif. Intell.'2016] respectively. However, the reduction framework, while immensely useful in line-based proof systems, is not refutationally complete for static proof systems.<br>
 
 Nullstellensatz (NS, [Beame et al. FOCS.'1994]) is a well known static propositional proof system, inspired by Hilbert's theorem [Hilbert Math. Ann.'1893] of the same name. It falls into the category of algebraic proof systems such as the Polynomial Calculus [Book, Krajíček Cam. Uni.'2019, p.162] or the Ideal Proof System (IPS,[Grochow et al. J. ACM.'2018]). In this paper, we initiate the study of the NS proof system for QBFs using the existing expansion (∀Exp) framework and a new "∀Strat" framework. We introduce four new static QBF refutation systems: ∀Exp+NS, ∀Exp+NS', ∀Strat+NS and ∀Strat+NS', which use NS and a more powerful version of NS (NS') with twin variable encoding that allows it to simulate tree-like resolution without an exponential blowup.<br>
