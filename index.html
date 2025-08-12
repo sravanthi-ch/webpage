@@ -301,6 +301,29 @@ footer {
   fill: var(--accent);
 }
 
+	.row {
+    display: flex;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    padding: 20px 0;
+  }
+  .item {
+    flex: 1;
+    text-align: center;
+    padding: 0 60px;  /* Excess horizontal padding */
+    position: relative;
+  }
+  /* Add vertical separator lines except after last item */
+  .item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    right: 0;
+    width: 3px;
+    background-color: black;
+  }
 
   @media (min-width: 768px) {
   footer {
@@ -346,20 +369,16 @@ footer {
       <li>Quantified Boolean Formulas, SAT</li>
       <li>Model Counting, MaxSAT</li>
     </ul> -->
-<div style="font-weight: bold; padding: 20px; font-family: Arial, sans-serif; font-size: 16px;">
-  <span style="padding: 0 40px;">Proof Complexity</span>
-  <span style="padding: 0 40px; border-left: 3px solid #000; border-right: 3px solid #000; margin: 0 10px;">
-    Algebraic Proof Systems
-  </span>
-  <span style="padding: 0 40px;">Quantified Boolean Formulas</span>
+<div class="row">
+  <div class="item">Proof Complexity</div>
+  <div class="item">Algebraic Proof Systems</div>
+  <div class="item">Quantified Boolean Formulas</div>
 </div>
 
-<div style="font-weight: bold; padding: 20px 20px 40px 20px; font-family: Arial, sans-serif; font-size: 16px;">
-  <span style="padding: 0 40px;">SAT</span>
-  <span style="padding: 0 40px; border-left: 3px solid #000; border-right: 3px solid #000; margin: 0 10px;">
-    Model Counting
-  </span>
-  <span style="padding: 0 40px;">MaxSAT</span>
+<div class="row">
+  <div class="item">SAT</div>
+  <div class="item">Model Counting</div>
+  <div class="item">MaxSAT</div>
 </div>
 
   </section>
