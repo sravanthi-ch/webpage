@@ -8,7 +8,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-  :root {
+  @font-face {
+  font-family: 'Computer Modern';
+  src: local('Latin Modern Roman'), local('Computer Modern'), local('Times New Roman'), serif;
+}
+
+:root {
   --bg-light: #FDF2F1;
   --bg-dark: #000000;
   --text: #0C4271;
@@ -52,7 +57,7 @@ html, body {
 }
 
 body {
-  font-family: 'Source Serif Pro', serif;
+  font-family: 'Calibri', 'Segoe UI', sans-serif;
   font-size: var(--body-font-size);
   background-color: var(--bg-light);
   color: var(--text);
@@ -177,8 +182,9 @@ section {
   max-width: 100%;
 }
 
-h2 {
-  font-family: 'Merriweather', serif;
+/* Headings: Georgia */
+h2, h3, h4, h5, h6 {
+  font-family: 'Georgia', serif;
   font-size: var(--h2-font-size);
   color: var(--heading-color);
   border-bottom: 3px solid var(--accent);
@@ -187,7 +193,9 @@ h2 {
   letter-spacing: 0.5px;
 }
 
+/* Body text: Calibri */
 p, ul, ul li {
+  font-family: 'Calibri', 'Segoe UI', sans-serif;
   font-size: var(--body-font-size);
   margin-bottom: 1rem;
 }
@@ -201,21 +209,24 @@ ul li {
   margin-bottom: 0.5rem;
 }
 
+/* Abstract toggle */
 .abstract-toggle {
   color: var(--accent);
   text-decoration: underline;
   cursor: pointer;
   font-weight: 600;
-  margin-left: 0rem;
+  font-family: 'Georgia', serif;
   font-size: var(--abstract-font-size);
   user-select: none;
   white-space: nowrap;
 }
 
+/* Abstract text: Computer Modern */
 .abstract-text {
   display: none;
   margin-top: 0.25rem;
   margin-left: 1.5rem;
+  font-family: 'Computer Modern', 'Latin Modern Roman', 'Times New Roman', serif;
   font-style: italic;
   color: var(--secondary);
   font-size: var(--abstract-font-size);
