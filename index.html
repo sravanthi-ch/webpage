@@ -200,23 +200,27 @@ h2 {
 }
 	/* h3 – subsection headings */
 h3 {
-  font-family: 'Georgia', serif;
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: var(--secondary);
-  margin: 1.25rem 0 0.5rem;
-}
-
-
-/* h4 – minor headings (e.g., Conference Proceedings) */
-h4 {
   font-family: 'Inter', sans-serif;
-  font-size: var(--h4-font-size);
+  font-size: clamp(1.1rem, 1.6vw, 1.3rem);
   color: var(--secondary);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin: 1.2rem 0 0.5rem;
   border-bottom: none;
+}
+
+
+/* h4 – minor headings (e.g., Conference Proceedings) */
+h4 {
+  font-family: 'Georgia', serif;
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  font-weight: 600;
+  color: var(--heading-color);
+  margin: 1rem 0 0.4rem;
+  letter-spacing: 0.3px;
+  font-style: italic;
+  border-left: 4px solid var(--accent);
+  padding-left: 0.6rem;
 }
 
 
