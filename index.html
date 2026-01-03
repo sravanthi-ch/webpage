@@ -36,6 +36,8 @@
   --h1-font-size: clamp(1.5rem, 2.5vw, 2.2rem);
   --h2-font-size: clamp(1.5rem, 2.5vw, 2.2rem);
   --abstract-font-size: clamp(1rem, 1.3vw, 1.5rem);
+	--h3-font-size: clamp(1.25rem, 2vw, 1.6rem);
+	--h4-font-size: clamp(1.1rem, 1.6vw, 1.3rem);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -187,7 +189,7 @@ section {
 }
 
 /* Headings: Georgia */
-h2, h3, h4, h5, h6 {
+h2 {
   font-family: 'Georgia', serif;
   font-size: var(--h2-font-size);
   color: var(--heading-color);
@@ -196,6 +198,27 @@ h2, h3, h4, h5, h6 {
   margin: 2rem 0 1rem;
   letter-spacing: 0.5px;
 }
+	/* h3 – subsection headings */
+h3 {
+  font-family: 'Merriweather', serif;
+  font-size: var(--h3-font-size);
+  color: var(--heading-color);
+  border-bottom: 2px solid var(--accent);
+  margin: 1.5rem 0 0.75rem;
+  letter-spacing: 0.4px;
+}
+
+/* h4 – minor headings (e.g., Conference Proceedings) */
+h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--h4-font-size);
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 1.2rem 0 0.5rem;
+  border-bottom: none;
+}
+
 
 /* Body text: Poppins */
 p, ul, ul li {
