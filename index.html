@@ -110,13 +110,24 @@ nav a:hover {
   background-color: var(--hover-bg);
   color: white;
 }
-nav a:last-child {
-  grid-column: 1 / -1;   /* span both columns */
+/*nav a:last-child {
+  grid-column: 1 / -1;  
   justify-self: center;
   width: auto;
   padding-left: 2rem;
   padding-right: 2rem;
 min-width: 60%;
+} */
+
+/* Mobile: center Teaching tab if it's alone in the last row */
+@media (max-width: 767px) {
+  nav a:last-child {
+    grid-column: 1 / -1;   /* span both columns */
+    justify-self: center;
+    width: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
 /* Desktop Navigation */
